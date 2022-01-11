@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Wed Jun  2 21:16:35 2021
-
 @author: Ivan
 版權屬於「行銷搬進大程式」所有，若有疑問，可聯絡ivanyang0606@gmail.com
 
@@ -29,12 +28,14 @@ handler = WebhookHandler('你自己的secret')
 
 line_bot_api.push_message('你自己的ID', TextSendMessage(text='你可以開始了'))
 
+
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
 
+ 
     # get request body as text
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
@@ -47,6 +48,7 @@ def callback():
 
     return 'OK'
 
+ 
 #訊息傳遞區塊
 ##### 基本上程式編輯都在這個function #####
 @handler.add(MessageEvent, message=TextMessage)
